@@ -1,0 +1,92 @@
+{
+  "n_clips": 7442,
+  "n_ratings": 68568,
+  "mean_raters_per_clip": 9.213652244020425,
+  "min_raters_per_clip": 4,
+  "tied_fraction": 0.08653587745229777,
+  "n_unambiguous": 6798,
+  "chance_uniform": 0.16666666666666666,
+  "recovery": {
+    "unambiguous_only": 0.4558693733451015,
+    "tie_counts_as_miss": 0.41642031711905403,
+    "tie_broken_by_intensity": 0.4399355012093523,
+    "tie_broken_at_random": 0.44544477291050794,
+    "tie_counts_as_hit": 0.47876914807847354,
+    "mean_vote_mass_on_intended": 0.3968461537864924
+  },
+  "per_emotion": {
+    "A": {
+      "n": 1271,
+      "unambiguous_only": 0.6643658326143227,
+      "tie_broken_by_intensity": 0.6254917387883556,
+      "tie_counts_as_hit": 0.6687647521636507,
+      "mean_vote_mass": 0.527191608112143,
+      "mean_agreement": 0.6527834827992184,
+      "mean_entropy": 0.4331457052486795
+    },
+    "D": {
+      "n": 1271,
+      "unambiguous_only": 0.3019366197183099,
+      "tie_broken_by_intensity": 0.2997639653815893,
+      "tie_counts_as_hit": 0.3422501966955153,
+      "mean_vote_mass": 0.28602215818974275,
+      "mean_agreement": 0.5626370482389366,
+      "mean_entropy": 0.5502618867493861
+    },
+    "F": {
+      "n": 1271,
+      "unambiguous_only": 0.35452961672473865,
+      "tie_broken_by_intensity": 0.34382376081825333,
+      "tie_counts_as_hit": 0.3831628638867034,
+      "mean_vote_mass": 0.32015558530114,
+      "mean_agreement": 0.6156020699293713,
+      "mean_entropy": 0.48868130879123883
+    },
+    "H": {
+      "n": 1271,
+      "unambiguous_only": 0.2892199824715162,
+      "tie_broken_by_intensity": 0.28560188827694727,
+      "tie_counts_as_hit": 0.3367427222659323,
+      "mean_vote_mass": 0.28974211600096733,
+      "mean_agreement": 0.6202486537852392,
+      "mean_entropy": 0.47574404958179944
+    },
+    "N": {
+      "n": 1087,
+      "unambiguous_only": 0.975609756097561,
+      "tie_broken_by_intensity": 0.9724011039558418,
+      "tie_counts_as_hit": 0.9760809567617296,
+      "mean_vote_mass": 0.7615319975945551,
+      "mean_agreement": 0.7685408427818732,
+      "mean_entropy": 0.3319028897341188
+    },
+    "S": {
+      "n": 1271,
+      "unambiguous_only": 0.18205574912891986,
+      "tie_broken_by_intensity": 0.18961447678992918,
+      "tie_counts_as_hit": 0.23760818253343824,
+      "mean_vote_mass": 0.249228261029992,
+      "mean_agreement": 0.6194683147082832,
+      "mean_entropy": 0.4776486139791736
+    }
+  },
+  "mean_agreement": 0.6366989907133686,
+  "mean_entropy": 0.46272043932144447,
+  "intended_counts": {
+    "A": 1271,
+    "D": 1271,
+    "F": 1271,
+    "H": 1271,
+    "S": 1271,
+    "N": 1087
+  },
+  "perceived_counts": {
+    "N": 4211,
+    "A": 1037,
+    "F": 717,
+    "D": 647,
+    "S": 437,
+    "H": 393
+  },
+  "n_actors": 91
+}

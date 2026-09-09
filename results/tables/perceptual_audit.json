@@ -1,0 +1,71 @@
+{
+  "neutral_attractor": {
+    "perceived_neutral_share": 0.5658425154528353,
+    "intended_neutral_share": 0.1460628863208815,
+    "nonneutral_intent_heard_as_neutral": 0.4963021243115657,
+    "sad_heard_as_neutral": 0.7183320220298978,
+    "mean_neutral_vote_mass_nonneutral": 0.3834730410772897
+  },
+  "reliability": {
+    "rater_rater_agreement": 0.4653428359690117,
+    "fleiss_kappa_perceived": 0.27780816897951716,
+    "krippendorff_alpha_perceived": 0.2811032402126721,
+    "mean_agreement": 0.6366989907133686,
+    "mean_normalised_entropy": 0.46272043932144447,
+    "frac_clips_majority_gt_half": 0.6734748723461436
+  },
+  "by_intensity": {
+    "LO": {
+      "n": 455,
+      "recovery": 0.18401937046004843,
+      "agreement": 0.6344633937491081,
+      "entropy": 0.4576777102518016
+    },
+    "MD": {
+      "n": 455,
+      "recovery": 0.3469879518072289,
+      "agreement": 0.6263966985395557,
+      "entropy": 0.4685064844272959
+    },
+    "HI": {
+      "n": 455,
+      "recovery": 0.5552941176470588,
+      "agreement": 0.6536504765076193,
+      "entropy": 0.44970584472384434
+    },
+    "XX": {
+      "n": 6077,
+      "recovery": 0.47664562669071237,
+      "agreement": 0.6363685338302748,
+      "entropy": 0.4636392202570102
+    }
+  },
+  "raw_recount": {
+    "n_ratings": 73254,
+    "extra_vs_shipped": 4686,
+    "recovery_unambiguous": 0.4532765207170144,
+    "sad_recovery": 0.18229166666666666
+  },
+  "human_ceiling": {
+    "n_ratings_scored": 66487,
+    "rater_vs_intended": 0.4015672236677847,
+    "rater_vs_peer_plurality": 0.5816024185179057
+  },
+  "by_modality": {
+    "voice": {
+      "recovery_unambiguous": 0.4558693733451015,
+      "mean_agreement": 0.6366989907133686,
+      "sad_recovery": 0.18205574912891986
+    },
+    "face": {
+      "recovery_unambiguous": 0.7072576018359151,
+      "mean_agreement": 0.7005999207725894,
+      "sad_recovery": 0.3645743766122098
+    },
+    "multimodal": {
+      "recovery_unambiguous": 0.7653090287667331,
+      "mean_agreement": 0.7259183719174314,
+      "sad_recovery": 0.3565217391304348
+    }
+  }
+}

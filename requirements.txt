@@ -1,0 +1,10 @@
+librosa==1.0.0
+matplotlib==3.11.1
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.0
+scipy==1.18.1
+soundfile==0.14.0
+statsmodels==0.15.0
+torch==2.14.0+cpu
+transformers==5.16.1

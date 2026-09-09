@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\caption{Unweighted average recall (\%) under speaker-independent five-fold cross-validation over the 91 actors. Each block fixes the label a system was \emph{trained} on; within a block, UAR$_I$ and UAR$_P$ score the same predictions against the intended and the perceived label respectively, and $R$ is the probability that the prediction matches one randomly drawn listener vote. Best in each column in bold.}
+\label{tab:main}
+\small
+\begin{tabular}{l@{\hspace{5mm}}ccc@{\hspace{5mm}}ccc@{\hspace{5mm}}ccc}
+\hline
+ & \multicolumn{3}{c}{trained on intended} & \multicolumn{3}{c}{trained on perceived} & \multicolumn{3}{c}{trained on soft} \\
+\cline{2-4}\cline{5-7}\cline{8-10}
+System & UAR$_I$ & UAR$_P$ & $R$ & UAR$_I$ & UAR$_P$ & $R$ & UAR$_I$ & UAR$_P$ & $R$ \\
+\hline
+FUNC-GB & 55.8 & 49.3 & 34.8 & 34.1 & 39.3 & \textbf{51.6} & 45.4 & 51.1 & 43.3 \\
+FUNC-LR & 54.6 & 48.2 & 33.8 & 43.7 & 49.3 & 42.1 & 47.8 & 52.0 & 38.2 \\
+FUNC-MLP & 54.6 & 48.1 & 34.6 & 45.5 & 50.6 & 40.6 & 49.1 & 52.5 & 36.9 \\
+FUNC-RBF & 51.3 & 46.2 & 35.8 & 44.3 & 47.5 & 38.1 & 44.6 & 46.4 & 34.6 \\
+MFCC-LR & 45.2 & 42.7 & 31.4 & 39.8 & 43.4 & 34.7 & 42.0 & 43.9 & 32.6 \\
+MFCC-RBF & 48.1 & 44.1 & 33.6 & 42.1 & 44.9 & 35.3 & 42.1 & 43.5 & 32.6 \\
+SSL-LR & \textbf{73.8} & \textbf{58.9} & 39.2 & 53.1 & \textbf{64.5} & 51.3 & 60.1 & \textbf{66.7} & \textbf{46.1} \\
+SSL-MLP & 72.5 & 58.1 & \textbf{39.5} & \textbf{53.9} & 64.4 & 50.0 & \textbf{61.3} & 66.6 & 45.3 \\
+\hline
+\end{tabular}
+\vspace{-4mm}
+\end{table*}

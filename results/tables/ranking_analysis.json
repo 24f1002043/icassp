@@ -1,0 +1,369 @@
+{
+  "ranking": {
+    "intended": {
+      "kendall_tau": 0.9285714285714285,
+      "kendall_p": 0.0003968253968253968,
+      "tau_ci": [
+        0.8571428571428571,
+        0.9999999999999998
+      ],
+      "rank_intended": {
+        "FUNC-GB": 3,
+        "FUNC-LR": 5,
+        "FUNC-MLP": 4,
+        "FUNC-RBF": 6,
+        "MFCC-LR": 8,
+        "MFCC-RBF": 7,
+        "SSL-LR": 1,
+        "SSL-MLP": 2
+      },
+      "rank_perceived": {
+        "FUNC-GB": 3,
+        "FUNC-LR": 4,
+        "FUNC-MLP": 5,
+        "FUNC-RBF": 6,
+        "MFCC-LR": 8,
+        "MFCC-RBF": 7,
+        "SSL-LR": 1,
+        "SSL-MLP": 2
+      },
+      "n_pairs": 28,
+      "n_inversions": 1,
+      "n_significant_inversions": 0,
+      "inversions": [
+        {
+          "pair": [
+            "FUNC-LR",
+            "FUNC-MLP"
+          ],
+          "delta_intended": -0.000348997317316746,
+          "delta_perceived": 0.00041797510195346055,
+          "p_sign_intended": 0.551,
+          "p_sign_perceived": 0.516,
+          "both_significant": false
+        }
+      ]
+    },
+    "perceived": {
+      "kendall_tau": 0.8571428571428571,
+      "kendall_p": 0.001736111111111111,
+      "tau_ci": [
+        0.8571428571428571,
+        0.9999999999999998
+      ],
+      "rank_intended": {
+        "FUNC-GB": 8,
+        "FUNC-LR": 5,
+        "FUNC-MLP": 3,
+        "FUNC-RBF": 4,
+        "MFCC-LR": 7,
+        "MFCC-RBF": 6,
+        "SSL-LR": 2,
+        "SSL-MLP": 1
+      },
+      "rank_perceived": {
+        "FUNC-GB": 8,
+        "FUNC-LR": 4,
+        "FUNC-MLP": 3,
+        "FUNC-RBF": 5,
+        "MFCC-LR": 7,
+        "MFCC-RBF": 6,
+        "SSL-LR": 1,
+        "SSL-MLP": 2
+      },
+      "n_pairs": 28,
+      "n_inversions": 2,
+      "n_significant_inversions": 0,
+      "inversions": [
+        {
+          "pair": [
+            "FUNC-LR",
+            "FUNC-RBF"
+          ],
+          "delta_intended": -0.006323932723257486,
+          "delta_perceived": 0.018566160198234982,
+          "p_sign_intended": 0.8525,
+          "p_sign_perceived": 0.9875,
+          "both_significant": false
+        },
+        {
+          "pair": [
+            "SSL-LR",
+            "SSL-MLP"
+          ],
+          "delta_intended": -0.008142024174789597,
+          "delta_perceived": 0.0015974912625853488,
+          "p_sign_intended": 0.9775,
+          "p_sign_perceived": 0.5995,
+          "both_significant": false
+        }
+      ]
+    },
+    "soft": {
+      "kendall_tau": 0.8571428571428571,
+      "kendall_p": 0.001736111111111111,
+      "tau_ci": [
+        0.7857142857142856,
+        0.9999999999999998
+      ],
+      "rank_intended": {
+        "FUNC-GB": 5,
+        "FUNC-LR": 4,
+        "FUNC-MLP": 3,
+        "FUNC-RBF": 6,
+        "MFCC-LR": 8,
+        "MFCC-RBF": 7,
+        "SSL-LR": 2,
+        "SSL-MLP": 1
+      },
+      "rank_perceived": {
+        "FUNC-GB": 5,
+        "FUNC-LR": 4,
+        "FUNC-MLP": 3,
+        "FUNC-RBF": 6,
+        "MFCC-LR": 7,
+        "MFCC-RBF": 8,
+        "SSL-LR": 1,
+        "SSL-MLP": 2
+      },
+      "n_pairs": 28,
+      "n_inversions": 2,
+      "n_significant_inversions": 0,
+      "inversions": [
+        {
+          "pair": [
+            "MFCC-LR",
+            "MFCC-RBF"
+          ],
+          "delta_intended": -0.0015090243492280608,
+          "delta_perceived": 0.004070883426478877,
+          "p_sign_intended": 0.6155,
+          "p_sign_perceived": 0.751,
+          "both_significant": false
+        },
+        {
+          "pair": [
+            "SSL-LR",
+            "SSL-MLP"
+          ],
+          "delta_intended": -0.011317501666573748,
+          "delta_perceived": 0.00026961598451291646,
+          "p_sign_intended": 0.9965,
+          "p_sign_perceived": 0.5235,
+          "both_significant": false
+        }
+      ]
+    },
+    "pooled": {
+      "n_entries": 24,
+      "kendall_tau": 0.5797101449275361,
+      "kendall_p": 2.9783823595775196e-05,
+      "n_pairs": 276,
+      "n_inversions": 58,
+      "top_intended": [
+        "SSL-LR",
+        "intended"
+      ],
+      "top_perceived": [
+        "SSL-LR",
+        "soft"
+      ],
+      "rank_of_intended_winner_under_perceived": 5,
+      "rank_of_perceived_winner_under_intended": 4
+    }
+  },
+  "uar_ci": {
+    "FUNC-GB|intended|UAR_intended": [
+      0.5475418645884569,
+      0.5698177566910155
+    ],
+    "FUNC-GB|intended|UAR_perceived": [
+      0.4784385883095381,
+      0.5085633010160564
+    ],
+    "FUNC-GB|perceived|UAR_intended": [
+      0.3337567724137887,
+      0.3485726241633559
+    ],
+    "FUNC-GB|perceived|UAR_perceived": [
+      0.38076721958114207,
+      0.40495663327557113
+    ],
+    "FUNC-GB|soft|UAR_intended": [
+      0.4437038169521189,
+      0.46474569444504604
+    ],
+    "FUNC-GB|soft|UAR_perceived": [
+      0.4964110984504597,
+      0.5264792368883507
+    ],
+    "FUNC-LR|intended|UAR_intended": [
+      0.5340812186517697,
+      0.5577563194542421
+    ],
+    "FUNC-LR|intended|UAR_perceived": [
+      0.4659549343947118,
+      0.4969015770065328
+    ],
+    "FUNC-LR|perceived|UAR_intended": [
+      0.42625047248739123,
+      0.4481142174928977
+    ],
+    "FUNC-LR|perceived|UAR_perceived": [
+      0.4779236545706777,
+      0.5090559976100506
+    ],
+    "FUNC-LR|soft|UAR_intended": [
+      0.4665906396751826,
+      0.4883776457483023
+    ],
+    "FUNC-LR|soft|UAR_perceived": [
+      0.5045756334725487,
+      0.5349950531024962
+    ],
+    "FUNC-MLP|intended|UAR_intended": [
+      0.5356978529852423,
+      0.5575630687393955
+    ],
+    "FUNC-MLP|intended|UAR_perceived": [
+      0.4661614291008055,
+      0.4966188843555492
+    ],
+    "FUNC-MLP|perceived|UAR_intended": [
+      0.4439246381869287,
+      0.4656544551649996
+    ],
+    "FUNC-MLP|perceived|UAR_perceived": [
+      0.49071474648983054,
+      0.5215291003868956
+    ],
+    "FUNC-MLP|soft|UAR_intended": [
+      0.47964270540358367,
+      0.5015516889918276
+    ],
+    "FUNC-MLP|soft|UAR_perceived": [
+      0.5100347881327257,
+      0.5391031869936364
+    ],
+    "FUNC-RBF|intended|UAR_intended": [
+      0.5021698982019289,
+      0.5230900774903391
+    ],
+    "FUNC-RBF|intended|UAR_perceived": [
+      0.4474736830858138,
+      0.4771697990653595
+    ],
+    "FUNC-RBF|perceived|UAR_intended": [
+      0.43287378399564086,
+      0.45435543459756206
+    ],
+    "FUNC-RBF|perceived|UAR_perceived": [
+      0.4607621451112639,
+      0.4901641895854035
+    ],
+    "FUNC-RBF|soft|UAR_intended": [
+      0.43612887436747516,
+      0.4568288722415298
+    ],
+    "FUNC-RBF|soft|UAR_perceived": [
+      0.44891102144550904,
+      0.47841331188420055
+    ],
+    "MFCC-LR|intended|UAR_intended": [
+      0.44108875365836553,
+      0.4625804137270162
+    ],
+    "MFCC-LR|intended|UAR_perceived": [
+      0.411751493807713,
+      0.4423934150869521
+    ],
+    "MFCC-LR|perceived|UAR_intended": [
+      0.3872336334036942,
+      0.4092086821681329
+    ],
+    "MFCC-LR|perceived|UAR_perceived": [
+      0.41843856470711555,
+      0.44841465591689345
+    ],
+    "MFCC-LR|soft|UAR_intended": [
+      0.4089996283050183,
+      0.43025907028435284
+    ],
+    "MFCC-LR|soft|UAR_perceived": [
+      0.4251252835838215,
+      0.45437762300857826
+    ],
+    "MFCC-RBF|intended|UAR_intended": [
+      0.4708562016939603,
+      0.49204441588920567
+    ],
+    "MFCC-RBF|intended|UAR_perceived": [
+      0.4273516055428239,
+      0.45595718877515024
+    ],
+    "MFCC-RBF|perceived|UAR_intended": [
+      0.4102824318302801,
+      0.43182567944416794
+    ],
+    "MFCC-RBF|perceived|UAR_perceived": [
+      0.43415476599813635,
+      0.4644185168147235
+    ],
+    "MFCC-RBF|soft|UAR_intended": [
+      0.4104694860434044,
+      0.43205414855612023
+    ],
+    "MFCC-RBF|soft|UAR_perceived": [
+      0.42051375387109785,
+      0.4502673610668168
+    ],
+    "SSL-LR|intended|UAR_intended": [
+      0.7279346523642772,
+      0.7474628066267591
+    ],
+    "SSL-LR|intended|UAR_perceived": [
+      0.5761172396572067,
+      0.6038699160607067
+    ],
+    "SSL-LR|perceived|UAR_intended": [
+      0.5207254259740959,
+      0.541018473433655
+    ],
+    "SSL-LR|perceived|UAR_perceived": [
+      0.6303181622765184,
+      0.6601444106850337
+    ],
+    "SSL-LR|soft|UAR_intended": [
+      0.5907262667293659,
+      0.611957282642349
+    ],
+    "SSL-LR|soft|UAR_perceived": [
+      0.6529014277159964,
+      0.6802156520247795
+    ],
+    "SSL-MLP|intended|UAR_intended": [
+      0.7153008025819022,
+      0.7348324308473039
+    ],
+    "SSL-MLP|intended|UAR_perceived": [
+      0.5668559608181225,
+      0.5951958919110616
+    ],
+    "SSL-MLP|perceived|UAR_intended": [
+      0.5285467413033962,
+      0.5498942871403086
+    ],
+    "SSL-MLP|perceived|UAR_perceived": [
+      0.6295728551962277,
+      0.6584826776076165
+    ],
+    "SSL-MLP|soft|UAR_intended": [
+      0.6021443299083804,
+      0.6237163551383098
+    ],
+    "SSL-MLP|soft|UAR_perceived": [
+      0.6529888096311253,
+      0.6799373126952929
+    ]
+  }
+}

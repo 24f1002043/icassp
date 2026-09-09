@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.pyc
+
+# CREMA-D is not redistributed here; scripts/get_data.sh fetches it.
+data/raw/
+data/cremad_audio_repo/
+
+# Derived and regenerable.
+data/features/
+data/processed/posteriors/
+data/processed/posteriors_unbal/
+
+# LaTeX build artefacts, at any depth.
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc

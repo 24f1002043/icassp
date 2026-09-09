@@ -1,0 +1,25 @@
+{
+  "n_folds": 5,
+  "seed": 20240917,
+  "regimes": [
+    "intended",
+    "perceived",
+    "soft"
+  ],
+  "systems": [
+    "MFCC-LR",
+    "MFCC-RBF",
+    "FUNC-LR",
+    "FUNC-RBF",
+    "FUNC-GB",
+    "FUNC-MLP",
+    "SSL-LR",
+    "SSL-MLP"
+  ],
+  "feature_dims": {
+    "mfcc": 26,
+    "funcs": 677,
+    "ssl": 768
+  },
+  "n_actors": 91
+}
