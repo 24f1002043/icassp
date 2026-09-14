@@ -1,0 +1,49 @@
+ICASSP 2027 initial paper submission: what goes in each field.
+Plain ASCII, so it pastes cleanly into the CMS web form.
+Upload the PDF as: radhakrishnan.pdf
+
+PAGE 1: SUBMISSION DETAILS
+==========================
+
+Submission Title (ALL CAPS, must match the PDF exactly)
+WHOSE LABEL? ACTOR INTENT VERSUS LISTENER PERCEPTION IN CREMA-D SPEECH EMOTION RECOGNITION
+
+Paper Abstract (146 words; the form allows 200)
+CREMA-D results are almost always scored against the filename emotion, which records an actor's instruction rather than what a listener heard. The corpus ships the data needed to check that (68,568 voice-only judgements), and it is seldom used. Listeners recover the intended category for 45.6% of clips; sad reaches 18.2% against a 16.7% floor, because 71.8% of sad-intended clips are heard as neutral. We train eight systems and score identical predictions against both label sets. Swapping the key alone moves a fixed system's accuracy by up to 29.7 points and reorders any table mixing the conventions (tau = 0.58). The intended label is not merely noisier: a classifier recovers acted sadness at 66.6% where listeners reach 18.2%. It is a learnable target with little to do with what anyone hears, and a CREMA-D number's value and its verdict both turn on a choice papers rarely state.
+
+Primary Topic
+10.4.1: Speech emotion recognition [SL-EVT-EMO]
+
+Secondary Topic (optional)
+10.6: Speech processing resources [SL-DAT]
+
+Keywords / Index Terms (must match the PDF)
+speech emotion recognition, label uncertainty, perceptual annotation, evaluation protocols, CREMA-D
+
+IEEE Privacy Policy / IEEE Event Terms and Conditions
+Tick both, after reading them.
+
+Industry / Academia Source
+Academia (including Government Laboratories)
+(The form pre-selects "Both". Change it.)
+
+Important Information acknowledgement
+Tick it. Item 3 affirms you read the whole paper kit and accept its conditions,
+which include the LLM policy on the submission page.
+
+PAGE 2: AUTHOR ENTRY (this exact order, matching the PDF)
+=========================================================
+1. Abhiram Radhakrishnan
+   sec23am091@sairamtap.edu.in
+   Sri Sairam Engineering College, Chennai, India
+   https://orcid.org/0009-0005-8766-7012
+2. Gengaraj P
+   sec23am057@sairamtap.edu.in
+   Sri Sairam Engineering College, Chennai, India
+   ORCiD: create at https://orcid.org/register before submitting
+3. Praveen V
+   sec23am119@sairamtap.edu.in
+   Sri Sairam Engineering College, Chennai, India
+   ORCiD: create at https://orcid.org/register before submitting
+
+DEADLINE: 17 September 2026, 17:30 India time. No extensions.

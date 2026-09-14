@@ -47,7 +47,7 @@ def table_label_audit():
         f"All & {a['n_clips']} & "
         r"\textbf{" + f2(a["recovery"]["unambiguous_only"]) + r"} & "
         f"{a['mean_agreement']:.2f} & {a['mean_entropy']:.2f}" + r" \\",
-        r"Chance & --- & 16.7 & --- & --- \\",
+        r"Chance &  & 16.7 &  &  \\",
         r"\hline",
         r"\end{tabular}",
         r"\vspace{-4mm}",
@@ -98,7 +98,7 @@ def table_main():
             r = piv[(s, regime)]
             for c in cols:
                 if r is None:
-                    cells.append("---")
+                    cells.append("n/a")
                     continue
                 txt = f2(r[c])
                 if abs(r[c] - best[(regime, c)]) < 1e-12:

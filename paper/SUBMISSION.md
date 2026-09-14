@@ -26,14 +26,14 @@ pdflatex main && bibtex main && pdflatex main && pdflatex main
 | Two columns, 86 mm each | via `spconf.sty` |
 | Times-Roman, ≥ 9 pt | `\ninept`; Nimbus Roman + STIX maths |
 | All fonts embedded | every font reports `emb yes` under `pdffonts` |
-| File size ≤ 5 MB | ~0.22 MB |
+| File size ≤ 5 MB | ~0.25 MB |
 | No page numbers | `spconf.sty` suppresses them |
-| Not blind — author list on the PDF | author and affiliation on page 1 |
-| Abstract 100–150 words | 149 |
+| Not blind: author list on the PDF | author and affiliation on page 1 |
+| Abstract 100–150 words | 146 |
 | Discussion of relation to prior work | Section 2, its own numbered section |
 | Compliance with Ethical Standards statement | before the references |
 
-| Authors on the PDF | Abhiram Radhakrishnan, Gengaraj P, Praveen V — Sri Sairam Engineering College |
+| Authors on the PDF | Abhiram Radhakrishnan, Gengaraj P, Praveen V, Sri Sairam Engineering College |
 | Repository link | footnote 2 on page 1: <https://github.com/24f1002043/icassp> |
 
 ## Still to do before you upload
@@ -45,7 +45,7 @@ pdflatex main && bibtex main && pdflatex main && pdflatex main
 2. **Repository link.** The footnote points at
    <https://github.com/24f1002043/icassp>. Make sure the repository is public and
    pushed before you submit, or reviewers will hit a 404.
-3. **Upload `radhakrishnan.pdf`**, not `main.pdf` — the kit asks for the first
+3. **Upload `radhakrishnan.pdf`**, not `main.pdf`, since the kit asks for the first
    author's last name as the filename. Paste title, authors, keywords and the
    ASCII abstract from `submission_form.txt`.
 4. **LLM policy.** ICASSP 2027 forbids submitting a manuscript that an LLM

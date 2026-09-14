@@ -5,6 +5,8 @@
 \usepackage{spconf,amsmath,graphicx,url}
 % The paper kit sets a 9 pt floor for all text; LaTeX footnotes default to 8 pt.
 \renewcommand{\footnotesize}{\small}
+% Same Index Terms heading as spconf.sty, with a colon instead of its em dash.
+\def\keywords{\vspace{.5em}{\bfseries\textit{Index Terms}:\ \relax}}
 
 \input{numbers}
 
@@ -25,7 +27,7 @@
 \begin{abstract}
 CREMA-D results are almost always scored against the filename emotion, which
 records an actor's instruction rather than what a listener heard. The corpus
-ships the data needed to check that---\NRatings{} voice-only judgements---and it
+ships the data needed to check that (\NRatings{} voice-only judgements), and it
 is seldom used. Listeners recover the intended category for \Recovery\% of
 clips; sad reaches \SadRecovery\% against a 16.7\% floor, because
 \SadToNeutral\% of sad-intended clips are heard as neutral. We train
@@ -50,7 +52,7 @@ CREMA-D~\cite{cao2014cremad} is among the most heavily used corpora in speech
 emotion recognition (SER). Its appeal is obvious: 7{,}442 clips, 91 actors with
 a deliberately broad demographic spread, six categories, clean recordings, and a
 permissive licence. The convention in the literature is to read the label off
-the filename---\texttt{1001\_IEO\_HAP\_LO} is a happy clip---and to report
+the filename (\texttt{1001\_IEO\_HAP\_LO} is a happy clip) and to report
 accuracy against it. The tooling follows suit: the most widely used public
 loader for the corpus obtains its label by splitting the filename on underscores
 and never opens the rating files.\footnote{The line
@@ -81,7 +83,7 @@ is one that listeners themselves largely cannot reproduce
 system's reported accuracy by as much as \SwingWAmax{} points, and scrambles the
 ordering of a table whose entries were produced under different conventions,
 which is what a benchmark table for this corpus actually is
-(Section~\ref{sec:results}). Third---and this surprised us---the
+(Section~\ref{sec:results}). Third, and this surprised us, the
 difference between the two keys is not a difference between signal and noise. A
 plain classifier recovers acted sadness from the audio \SadRatio{} times more
 often than listeners do, so the filename label is a perfectly learnable target;
@@ -169,7 +171,7 @@ something in common. Nor is it a property of the corpus as a whole. Running the
 same computation on the visual and audio-visual conditions gives
 \FaceRecovery\% and \MMRecovery\% recovery respectively. The actors were, by and
 large, doing their job, and a viewer can tell what they were doing. What fails
-is the recovery of the instruction by ear---and the ear is the only channel SER
+is the recovery of the instruction by ear, and the ear is the only channel SER
 has.
 
 Intensity behaves as one would hope, which is a useful sanity check on the
@@ -224,8 +226,8 @@ and the way in which it is wrong is the more interesting half of the story.
 be competitive. \textsc{mfcc}: 13 MFCC means and standard deviations (26-d).
 \textsc{func}: a GeMAPS-style functional set~\cite{eyben2016gemaps} of 84
 prosodic, spectral and cepstral descriptors, each summarised by eight
-statistics---mean, standard deviation, median, interquartile range, the 1st and
-99th percentiles and their range, and a linear slope over time---together with
+statistics (mean, standard deviation, median, interquartile range, the 1st and
+99th percentiles and their range, and a linear slope over time), together with
 voiced fraction, duration and jitter and shimmer proxies (677-d).
 \textsc{ssl}: frozen WavLM Base+~\cite{chen2022wavlm} hidden states mean-pooled
 over time and averaged over transformer layers 1--12 (768-d). The layer average
@@ -273,7 +275,7 @@ comparisons use common draws.
 \subsection{The numbers move}
 
 Table~\ref{tab:main} gives every system under every regime. Under the standard
-protocol---train on the filename label, score against it---our strongest system,
+protocol (train on the filename label, score against it), our strongest system,
 \TopSystem, reports \TopWAI\% accuracy, which is the range CREMA-D papers
 usually occupy; the spread below it is a realistic one and not a set of straw
 men. Scoring those identical predictions against the perceptual label instead
@@ -293,8 +295,8 @@ rating the same clip agree only \RaterRater\% of the time. Predicting a listener
 is easier than being one, which is what a model fitted to the vote distribution
 is for.
 
-None of this is surprising once stated---models fit the labels they are given
-and are flattered by being measured against them---but it establishes the size
+None of this is surprising once stated: models fit the labels they are given
+and are flattered by being measured against them. Still, it establishes the size
 of the effect. Two papers reporting CREMA-D accuracy under the two conventions
 are not describing the same quantity, and nothing in a typical experimental
 section would reveal which convention was used.
@@ -305,8 +307,8 @@ section would reveal which convention was used.
 \centering
 \includegraphics[width=0.98\linewidth]{../results/figures/fig2b_ranking_pooled}
 \vspace{-3mm}
-\caption{All \PoolEntries{} entries---every system under every training
-label---ranked by UAR against the intended label (left) and against the
+\caption{All \PoolEntries{} entries (every system under every training
+label), ranked by UAR against the intended label (left) and against the
 perceived label (right). Only the answer key differs. Entries that move three or
 more places are drawn with heavier red lines.}
 \label{fig:ranking}
@@ -332,8 +334,8 @@ and the entry that wins under perceived labels (\PoolTopP) places fourth under
 intended. Two groups reporting CREMA-D under different conventions would
 disagree about which system is best, and each would be right about its own.
 
-Were the two labels separated by a constant---were perceived labels simply
-intended labels plus noise---every system would lose the same amount and the
+Were the two labels separated by a constant (were perceived labels simply
+intended labels plus noise), every system would lose the same amount and the
 ordering would be untouched. It is not, because the keys reward different
 behaviour. A system that has learned the neutral attractor scores well against
 perception and poorly against intent; a system that has learned to separate the
@@ -348,7 +350,7 @@ whichever choice of key was made, usually silently.
 \vspace{-3mm}
 \caption{Per-class recall for the strongest system under each key, against the
 listeners' own recovery of the intended label. On the categories listeners find
-hardest---sadness above all---the classifier reads the actor's instruction out
+hardest, sadness above all, the classifier reads the actor's instruction out
 of the audio far better than they do.}
 \label{fig:peremotion}
 \vspace{-5mm}
@@ -385,8 +387,8 @@ anyone hears.
 \label{sec:discussion}
 
 The narrow recommendation is that CREMA-D results should state which label set
-they use, and that the perceptual labels---which require no new annotation, only
-reading a file that ships with the corpus---should be reported alongside the
+they use, and that the perceptual labels (which require no new annotation, only
+reading a file that ships with the corpus) should be reported alongside the
 filename labels. Doing so costs nothing and makes results comparable.
 
 The broader point concerns acted corpora generally. Such a corpus carries two
@@ -407,7 +409,7 @@ kind of spread found in benchmark tables rather than among frontier models;
 whether it also occurs among a set of near-identical large models is open.
 Finally, everything here concerns one corpus. CREMA-D is the convenient case
 because it distributes both labels for the same clips, but the question it
-raises---which reading of an acted corpus is being scored---applies wherever
+raises (which reading of an acted corpus is being scored) applies wherever
 directed emotion is used as ground truth.
 
 \vfill\pagebreak

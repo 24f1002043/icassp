@@ -32,7 +32,7 @@ label set with speaker-independent 5-fold CV over the 91 actors:
 |---|---|
 | Best system, trained and scored on **intended** | 73.5% accuracy |
 | The *same predictions*, scored on **perceived** | **43.8%** |
-| Ranking of systems trained alike, across the two keys | τ = 0.93 — largely preserved |
+| Ranking of systems trained alike, across the two keys | τ = 0.93, largely preserved |
 | Ranking of all 24 entries (system × training label) | **τ = 0.58**, 58/276 pairs invert |
 | Model recovers acted *sad* (intended key) | **66.6%**, where listeners reach 18.2% |
 | Best perceived-trained system vs. a random listener | 51.6%, above the 46.5% two listeners manage |
@@ -41,7 +41,7 @@ So the intended label is not simply the noisier target: a plain classifier reads
 the actor's instruction out of the audio far better than listeners do. It is a
 learnable target that has little to do with what anyone hears. Holding the
 training label fixed, the two keys agree on which system is better; a table that
-mixes conventions — which is what a CREMA-D leaderboard is — does not.
+mixes conventions (which is what a CREMA-D leaderboard is) does not.
 
 ## Layout
 
@@ -109,12 +109,12 @@ on CPU; the WavLM pass is the slow step (~30 min on 16 cores).
 For every clip we derive three targets over the six categories
 `{A, D, F, H, N, S}`:
 
-* `intended` — the filename category, i.e. the direction the actor was given.
-* `perceived` — the plurality of the voice-only votes. Ties (8.7% of clips)
+* `intended`: the filename category, i.e. the direction the actor was given.
+* `perceived`: the plurality of the voice-only votes. Ties (8.7% of clips)
   break towards the co-winning category with the higher mean rated intensity;
   `01_build_labels.py` also emits a random-tiebreak and a strict variant, and
   the headline number is reported under every convention.
-* `soft` — the normalised vote distribution.
+* `soft`: the normalised vote distribution.
 
 All three are written to `data/processed/clip_labels.csv`.
 
