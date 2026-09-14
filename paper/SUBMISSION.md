@@ -33,18 +33,27 @@ pdflatex main && bibtex main && pdflatex main && pdflatex main
 | Discussion of relation to prior work | Section 2, its own numbered section |
 | Compliance with Ethical Standards statement | before the references |
 
-| ORCiD on the PDF | `0009-0005-8766-7012`, as a footnote on page 1 |
+| Authors on the PDF | Abhiram Radhakrishnan, Gengaraj P, Praveen V — Sri Sairam Engineering College |
+| Repository link | footnote 2 on page 1: <https://github.com/24f1002043/icassp> |
 
 ## Still to do before you upload
 
-1. **Enter the ORCiD on the submission form too.** It is on the PDF, but CMS
-   checks the form; a missing one there withdraws the paper automatically. Also
-   verify one of your ORCiD email addresses — the record still shows both as
-   unverified, which blocks you from editing the record itself.
-2. **Repository link.** `main.tex` carries a footnote reading "Repository link
-   to be inserted on acceptance." Either push this repository and paste the URL,
-   or leave the placeholder — but do not forget it in the camera-ready.
-3. **Affiliation.** Check the department line is how you want it to appear.
+1. **ORCiD for all three authors.** Abhiram Radhakrishnan: `0009-0005-8766-7012`. Gengaraj P
+   and Praveen V each need their own (free, <https://orcid.org/register>). All
+   three go into the CMS form; a missing one withdraws the paper automatically.
+   Verify an email on each ORCiD record.
+2. **Repository link.** The footnote points at
+   <https://github.com/24f1002043/icassp>. Make sure the repository is public and
+   pushed before you submit, or reviewers will hit a 404.
+3. **Upload `radhakrishnan.pdf`**, not `main.pdf` — the kit asks for the first
+   author's last name as the filename. Paste title, authors, keywords and the
+   ASCII abstract from `submission_form.txt`.
+4. **LLM policy.** ICASSP 2027 forbids submitting a manuscript that an LLM
+   generated in whole or in significant part, and requires authors to have
+   verified all LLM output. The authors must rewrite the text in their own words
+   and re-check every number (`bash scripts/run_all.sh`, `src/09_verify.py`)
+   before submitting, and disclose AI assistance as IEEE's AI-generated-text
+   guidelines require.
 4. **Author list must match the submission form exactly.**
 5. Re-run `python src/09_verify.py` after any change to the pipeline; it checks
    the headline numbers, that every posterior is a valid distribution, that no

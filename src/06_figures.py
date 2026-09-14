@@ -157,7 +157,9 @@ def fig_per_emotion():
     fig, ax = plt.subplots(figsize=(COL, COL * 0.78))
     ax.bar(x - w, human, w, label="listeners, intended key", color="0.25")
     ax.bar(x, m_i, w, label=f"{best}, intended key", color="0.62")
-    ax.bar(x + w, m_p, w, label=f"{best}, perceived key", color="#c0392b")
+    # hatched so the series stays distinct from the dark bars in a B/W print
+    ax.bar(x + w, m_p, w, label=f"{best}, perceived key", color="#c0392b",
+           hatch="////", edgecolor="white", linewidth=0)
     ax.axhline(100 / 6, ls=(0, (2, 2)), lw=0.7, color="k", zorder=0)
     ax.set_xlim(-0.55, 6.02)
     ax.text(5.62, 100 / 6, "chance", fontsize=6.2, ha="left", va="center",

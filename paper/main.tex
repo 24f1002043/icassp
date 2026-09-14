@@ -3,6 +3,8 @@
 %   IEEEbib.bst (IEEE bibliography style)
 \documentclass{article}
 \usepackage{spconf,amsmath,graphicx,url}
+% The paper kit sets a 9 pt floor for all text; LaTeX footnotes default to 8 pt.
+\renewcommand{\footnotesize}{\small}
 
 \input{numbers}
 
@@ -10,12 +12,11 @@
   in CREMA-D Speech Emotion Recognition}
 
 % ICASSP does not review blind: names stay on the PDF.
-% ICASSP 2027 requires a valid ORCiD for every author; it must also be entered
-% on the submission form, not only here.
-\name{Abhiram Radhakrishnan\thanks{ORCiD
-  \texttt{https://orcid.org/0009-0005-8766-7012}}}
-\address{Sri Sai Ram Institute of Technology, Chennai, India \\
-  \texttt{sec23am091@sairamtap.edu.in}}
+% ICASSP 2027 requires a valid ORCiD for every author, entered on the CMS
+% submission form (Abhiram Radhakrishnan: 0009-0005-8766-7012).
+\name{Abhiram Radhakrishnan, Gengaraj P, Praveen V}
+\address{Sri Sairam Engineering College, Chennai, India \\
+  \texttt{\{sec23am091, sec23am057, sec23am119\}@sairamtap.edu.in}}
 
 \begin{document}
 \ninept
@@ -67,8 +68,8 @@ collected in three presentation conditions, one of which is voice only. Those
 ratings sit in \texttt{processedResults/} and are, as far as we can tell, almost
 never used for anything beyond reporting inter-rater agreement in passing.
 
-We looked at them. Restricting attention to the audio condition---the condition
-an SER system is actually being asked to emulate---listeners recover the
+We looked at them. Restricting attention to the audio condition, the one an SER
+system is actually being asked to emulate, listeners recover the
 intended category for \Recovery\% of clips. Sad is recovered \SadRecovery\% of
 the time against a chance floor of 16.7\%. The gap is not a curiosity confined
 to a handful of poor recordings: it is broad, systematic, and it has a
@@ -86,7 +87,7 @@ plain classifier recovers acted sadness from the audio \SadRatio{} times more
 often than listeners do, so the filename label is a perfectly learnable target;
 it is just not a target that has much to do with what anyone hears. Code, the
 derived label sets and the full result tables are released with the
-paper.\footnote{Repository link to be inserted on acceptance.}
+paper.\footnote{\url{https://github.com/24f1002043/icassp}}
 
 \section{Relation to prior work}
 \label{sec:prior}
@@ -307,7 +308,7 @@ section would reveal which convention was used.
 \caption{All \PoolEntries{} entries---every system under every training
 label---ranked by UAR against the intended label (left) and against the
 perceived label (right). Only the answer key differs. Entries that move three or
-more places are drawn in red.}
+more places are drawn with heavier red lines.}
 \label{fig:ranking}
 \vspace{-5mm}
 \end{figure}
