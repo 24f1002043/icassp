@@ -5,9 +5,9 @@ Paper kit: <https://cmsworkshops.com/ICASSP2027/papers/paper_kit.php>
 
 `spconf.sty` and `IEEEbib.bst` in this directory are the official files from
 that kit, downloaded unmodified from
-`https://cmsworkshops.com/ICASSP2027/papers/PaperFormat/`. The full kit,
-including `Template.tex`, `Template.pdf` and the Word template, is kept under
-`official_kit/` for reference.
+`https://cmsworkshops.com/ICASSP2027/papers/PaperFormat/`. The rest of the kit
+(`Template.tex`, `Template.pdf`, the Word template, the sample images) is not
+kept here; re-download it from that URL if you need it.
 
 ## Build
 
