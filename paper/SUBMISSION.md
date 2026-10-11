@@ -45,16 +45,15 @@ pdflatex main && bibtex main && pdflatex main && pdflatex main
 2. **Repository link.** The footnote points at
    <https://github.com/24f1002043/icassp>. Make sure the repository is public and
    pushed before you submit, or reviewers will hit a 404.
-3. **Upload `radhakrishnan.pdf`**, not `main.pdf`, since the kit asks for the first
-   author's last name as the filename. Paste title, authors, keywords and the
-   ASCII abstract from `submission_form.txt`.
+3. **Submitted file.** `paper/abhiram_icassp2027_preprint.pdf` is the exact PDF
+   uploaded to CMS as paper 4247, on 14 September 2026. Keep it unchanged; the
+   camera-ready is a separate file if the paper is accepted.
 4. **LLM policy.** ICASSP 2027 forbids submitting a manuscript that an LLM
    generated in whole or in significant part, and requires authors to have
    verified all LLM output. The authors must rewrite the text in their own words
-   and re-check every number (`bash scripts/run_all.sh`, `src/09_verify.py`)
-   before submitting, and disclose AI assistance as IEEE's AI-generated-text
-   guidelines require.
-4. **Author list must match the submission form exactly.**
+   and re-check every number (`bash scripts/run_all.sh`, `src/09_verify.py`),
+   and disclose AI assistance as IEEE's AI-generated-text guidelines require.
+5. **Author list must match the submission form exactly.**
 5. Re-run `python src/09_verify.py` after any change to the pipeline; it checks
    the headline numbers, that every posterior is a valid distribution, that no
    actor spans two cross-validation folds, and that all paper artefacts exist.
