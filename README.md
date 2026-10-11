@@ -123,3 +123,7 @@ All three are written to `data/processed/clip_labels.csv`.
 CREMA-D is by Cao et al., IEEE Trans. Affective Computing 5(4):377–390, 2014,
 distributed under the Open Database License. This repository redistributes no
 CREMA-D data; the scripts download it.
+
+## Licence
+
+The code in this repository is released under the MIT License (see [LICENSE](LICENSE)). The datasets keep their own terms, described above, and the paper PDF is not covered by this licence.
