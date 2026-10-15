@@ -1,5 +1,14 @@
 # Whose Label? Actor Intent vs. Listener Perception in CREMA-D
 
+**Paper:** [*Whose Label? Actor Intent Versus Listener Perception in CREMA-D Speech Emotion Recognition* (PDF)](paper/abhiram_icassp2027_preprint.pdf)
+— Abhiram Radhakrishnan (first author), Gengaraj P, Praveen V. Submitted to IEEE ICASSP 2027; under review.
+
+**Reproduce in one command** (CPU only; fetches the data, runs every experiment, verifies the numbers, builds the PDF):
+
+```bash
+python -m venv .venv && .venv/Scripts/pip install -r requirements.txt && bash scripts/run_all.sh
+```
+
 Code and derived label sets for an ICASSP submission on the gap between the
 emotion CREMA-D actors were told to portray (the filename label) and the emotion
 listeners actually report hearing (the corpus's own voice-only perceptual
