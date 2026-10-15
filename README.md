@@ -1,7 +1,7 @@
 # Whose Label? Actor Intent vs. Listener Perception in CREMA-D
 
 **Paper:** [*Whose Label? Actor Intent Versus Listener Perception in CREMA-D Speech Emotion Recognition* (PDF)](paper/abhiram_icassp2027_preprint.pdf)
-— Abhiram Radhakrishnan (first author), Gengaraj P, Praveen V. Submitted to IEEE ICASSP 2027; under review.
+by Abhiram Radhakrishnan (first author), Gengaraj P, Praveen V. Submitted to IEEE ICASSP 2027; under review.
 
 **Reproduce in one command** (CPU only; fetches the data, runs every experiment, verifies the numbers, builds the PDF):
 
