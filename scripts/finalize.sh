@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Regenerate every derived artefact and rebuild the paper. Safe to re-run.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 PY=../.venv/Scripts/python.exe

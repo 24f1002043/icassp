@@ -1,12 +1,3 @@
-"""Extract two CPU-only acoustic representations for every CREMA-D clip.
-
-  mfcc    - 13 MFCC means and standard deviations (26-d); the classic
-            low-capacity baseline.
-  funcs   - an eGeMAPS-style functional set built from prosodic, spectral and
-            cepstral low-level descriptors (~380-d).
-
-Both are written to data/features/<name>.npz keyed by clip name.
-"""
 import sys
 import time
 import warnings
@@ -22,7 +13,6 @@ SR = 16000
 
 
 def _functionals(x, prefix, with_slope=True):
-    """Summarise a 1-D (time,) or 2-D (dim, time) descriptor."""
     x = np.atleast_2d(x)
     x = np.nan_to_num(x, nan=0.0, posinf=0.0, neginf=0.0)
     t = np.arange(x.shape[1], dtype=float)
@@ -48,21 +38,19 @@ def extract(path):
     import librosa
     y, _ = librosa.load(path, sr=SR, mono=True)
     y, _ = librosa.effects.trim(y, top_db=35)
-    if y.size < SR // 10:                       # guard against near-empty clips
+    if y.size < SR // 10:
         y = np.pad(y, (0, SR // 10 - y.size))
     y = y / (np.abs(y).max() + 1e-9)
 
-    n_fft, hop = 400, 160                       # 25 ms window, 10 ms hop
+    n_fft, hop = 400, 160
     S = np.abs(librosa.stft(y, n_fft=n_fft, hop_length=hop))
     mel = librosa.feature.melspectrogram(S=S ** 2, sr=SR, n_mels=40)
     logmel = librosa.power_to_db(mel + 1e-10)
     mfcc = librosa.feature.mfcc(S=logmel, n_mfcc=20)
 
-    # ---- the small baseline representation ---------------------------------
     m13 = mfcc[:13]
     mfcc_vec = np.concatenate([m13.mean(1), m13.std(1)])
 
-    # ---- the functional representation -------------------------------------
     d1 = librosa.feature.delta(mfcc)
     d2 = librosa.feature.delta(mfcc, order=2)
     rms = librosa.feature.rms(S=S, frame_length=n_fft, hop_length=hop)[0]
@@ -107,7 +95,7 @@ def _job(name):
     try:
         a, b, _ = extract(str(AUDIO / name))
         return name, a.astype(np.float32), b.astype(np.float32)
-    except Exception as exc:                     # keep the pool alive
+    except Exception as exc:
         return name, None, repr(exc)
 
 
@@ -132,7 +120,7 @@ def main():
         print("  FAIL", n, e)
 
     names = sorted(res)
-    keys = [n[:-4] for n in names]               # strip .wav
+    keys = [n[:-4] for n in names]
     mfcc = np.stack([res[n][0] for n in names])
     funcs = np.stack([res[n][1] for n in names])
     _, _, fnames = extract(str(AUDIO / names[0]))

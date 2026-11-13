@@ -1,10 +1,3 @@
-"""Score every stored system and test whether the answer key changes the ranking.
-
-The central comparison holds the trained models fixed and swaps only the label
-the predictions are scored against.  Confidence intervals come from a
-clip-level bootstrap; the same resamples are reused for every system so the
-paired differences and the rank correlations are computed on common draws.
-"""
 import json
 from itertools import combinations
 
@@ -20,7 +13,6 @@ REGIMES = ["intended", "perceived", "soft"]
 
 
 def uar(y_true, y_pred, w=None):
-    """Unweighted average recall (macro recall), optionally clip-weighted."""
     recalls = []
     for e in EMOTIONS:
         m = y_true == e
@@ -65,9 +57,7 @@ def main():
         for regime in REGIMES:
             P = runs[s][regime]
             pred = np.array(EMOTIONS)[P.argmax(1)]
-            # probability the model's label matches a randomly drawn rater
             rater_hit = S[np.arange(n), [idx[e] for e in pred]]
-            # soft cross-entropy against the vote distribution
             ce = -(S * np.log(np.clip(P, 1e-12, 1))).sum(1)
             rec = {
                 "system": s, "train": regime,
@@ -83,7 +73,6 @@ def main():
     print("\n=== all systems x training regimes ===")
     print(res.round(4).to_string(index=False))
 
-    # ------------------------------------------------ bootstrap for the CIs --
     def boot_stat(fn):
         return np.array([fn(b) for b in boot])
 
@@ -96,14 +85,12 @@ def main():
                 ci[f"{s}|{regime}|UAR_{key}"] = [float(np.percentile(vals, 2.5)),
                                                  float(np.percentile(vals, 97.5))]
 
-    # --------------------------- the ranking test: same models, two keys -----
     out = {}
     for regime in REGIMES:
         sub = res[res.train == regime].set_index("system").loc[systems]
         a = sub["UAR_intended"].to_numpy()
         b = sub["UAR_perceived"].to_numpy()
         tau, p = kendalltau(a, b)
-        # bootstrap the rank correlation using the shared resamples
         taus = []
         for bi in boot[:min(500, N_BOOT)]:
             aa = [uar(y_i[bi], curves[(s, regime)]["pred"][bi]) for s in systems]
@@ -115,7 +102,7 @@ def main():
         for (i, s1), (j, s2) in combinations(list(enumerate(systems)), 2):
             d_i = a[i] - a[j]
             d_p = b[i] - b[j]
-            if d_i == 0 or d_p == 0:      # exact tie: no order to invert
+            if d_i == 0 or d_p == 0:
                 continue
             if np.sign(d_i) != np.sign(d_p):
                 p1, p2 = curves[(s1, regime)]["pred"], curves[(s2, regime)]["pred"]
@@ -157,9 +144,6 @@ def main():
                   f"d_int={inv['delta_intended']:+.4f} "
                   f"d_perc={inv['delta_perceived']:+.4f}")
 
-    # ---- pooled: every (system, training label) entry on one leaderboard ----
-    # A real CREMA-D table mixes papers that made different, undocumented
-    # labelling choices, so the entry -- not the architecture -- is the unit.
     entries = [(s, r) for s in systems for r in REGIMES]
     a = np.array([res[(res.system == s) & (res.train == r)].UAR_intended.iloc[0]
                   for s, r in entries])

@@ -1,4 +1,3 @@
-"""Emit the LaTeX tables and a macro file of inline numbers for the paper."""
 import json
 import sys
 
@@ -176,7 +175,6 @@ def macros():
             m[f"BestI{tag}"] = f2(sub.UAR_intended.max())
             m[f"BestP{tag}"] = f2(sub.UAR_perceived.max())
             m[f"BestR{tag}"] = f2(sub.rater_agreement.max())
-        # what a fixed system's reported score does when only the key changes
         ti = res[res.train == "intended"].set_index("system")
         m["SwingWAmax"] = f"{100 * (ti.WA_intended - ti.WA_perceived).max():.1f}"
         m["SwingUARmax"] = f"{100 * (ti.UAR_intended - ti.UAR_perceived).max():.1f}"
@@ -185,12 +183,10 @@ def macros():
         m["NSystemsWord"] = {1: "one", 2: "two", 3: "three", 4: "four",
                              5: "five", 6: "six", 7: "seven", 8: "eight",
                              9: "nine", 10: "ten"}.get(n_sys, str(n_sys))
-        # the strongest system under the standard protocol, both ways
         top = ti.WA_intended.idxmax()
         m["TopSystem"] = r"\mbox{" + top + "}"
         m["TopWAI"] = f2(ti.loc[top, "WA_intended"])
         m["TopWAP"] = f2(ti.loc[top, "WA_perceived"])
-        # what training on the perceptual label buys, scored perceptually
         tp = res[res.train == "perceived"].set_index("system")
         ts = res[res.train == "soft"].set_index("system")
         m["GainPerceived"] = f"{100 * (tp.UAR_perceived - ti.UAR_perceived).mean():.1f}"
@@ -201,7 +197,6 @@ def macros():
         m["BestUARPerc"] = f2(res.UAR_perceived.max())
         m["BestUARInt"] = f2(res.UAR_intended.max())
 
-        # How closely does a system scored against intent mirror the listeners?
         import numpy as np
         lab = pd.read_csv(PROC / "clip_labels.csv", index_col=0).sort_index()
         P = np.load(PROC / "posteriors" / f"{top}__intended.npy")
@@ -215,7 +210,6 @@ def macros():
             i = EMOTIONS.index(e)
             m[f"Model{tag}"] = f2(model_rec[i])
             m[f"Human{tag}"] = f2(human_rec[i])
-        # categories where the model recovers intent better than listeners do
         m["NBeatHuman"] = str(int((model_rec > human_rec).sum()))
         m["ModelBeatsBy"] = f"{100 * (model_rec - human_rec).max():.0f}"
         si = EMOTIONS.index("S")

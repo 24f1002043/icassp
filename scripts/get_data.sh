@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Fetch the CREMA-D annotation files used by the label audit (no audio, ~45 MB).
 set -euo pipefail
 BASE="https://raw.githubusercontent.com/CheyneyComputerScience/CREMA-D/master"
 mkdir -p data/raw

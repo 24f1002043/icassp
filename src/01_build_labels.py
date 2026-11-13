@@ -1,17 +1,3 @@
-"""Build the three clip-level label sets used throughout the study.
-
-Sources
--------
-processedResults/tabulatedVotes.csv : the aggregation shipped with CREMA-D.
-                                      Rows are keyed 100000*queryType + clipNum,
-                                      so queryType 1 (= voice only) are the rows
-                                      whose key starts with a 1.
-finishedResponses.csv               : the individual ratings behind that table,
-                                      used here as an independent cross-check
-                                      and for the leave-one-rater-out ceiling.
-
-Outputs data/processed/clip_labels.csv and results/tables/label_audit.json.
-"""
 import json
 
 import numpy as np
@@ -23,13 +9,11 @@ SEED = 20240917
 
 
 def load_voice_votes():
-    """Clip x emotion vote counts for the voice-only condition."""
     tv = pd.read_csv(RAW / "tabulatedVotes.csv", index_col=0)
     voice = tv[tv.index.astype(str).str.startswith("1")].copy()
     assert len(voice) == 7442, len(voice)
     voice = voice.set_index("fileName").sort_index()
     counts = voice[EMOTIONS].astype(int)
-    # mean rated intensity per emotion; -1 marks "no rater chose this emotion"
     level_cols = {e: f"mean{EMO_NAME[e]}Resp" for e in EMOTIONS}
     levels = voice[[level_cols[e] for e in EMOTIONS]].copy()
     levels.columns = EMOTIONS
@@ -54,7 +38,6 @@ def main():
     for i, e in enumerate(EMOTIONS):
         df[f"v_{e}"] = V[:, i].astype(int)
 
-    # ---- soft label: the normalised voice-only vote distribution -------------
     P = V / n[:, None]
     for i, e in enumerate(EMOTIONS):
         df[f"p_{e}"] = P[:, i]
@@ -65,11 +48,6 @@ def main():
     df["unambiguous"] = n_winners == 1
     df["agreement"] = top / n
 
-    # ---- hard perceived label ----------------------------------------------
-    # Ties (8.7% of clips) are resolved in favour of the co-winning emotion that
-    # received the higher mean rated intensity; that is a property of the votes
-    # themselves rather than an arbitrary ordering.  A seeded random draw is the
-    # fallback when the intensities are also equal.
     L = levels.to_numpy(float)
     perceived, tie_random = [], []
     for row, lev, k in zip(V, L, n_winners):
@@ -94,7 +72,6 @@ def main():
     idx = {e: i for i, e in enumerate(EMOTIONS)}
     df["p_intended"] = P[np.arange(len(df)), [idx[e] for e in df["intended"]]]
 
-    # ---- recovery of the intended label under several conventions -----------
     ua = df["unambiguous"].to_numpy()
     hit_strict = (df["perceived_strict"] == df["intended"]).to_numpy()
     inwin = np.array([df["intended"].iloc[i] in

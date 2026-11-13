@@ -1,4 +1,3 @@
-"""Sanity checks over everything the paper depends on."""
 import json
 import sys
 
@@ -74,7 +73,6 @@ def main():
     check("paper/main.pdf", pdf.exists() and pdf.stat().st_size > 50_000,
           f"{pdf.stat().st_size//1024} KB" if pdf.exists() else "missing")
 
-    # numbers.tex must not carry an unresolved placeholder
     nums = (TABLES.parents[1] / "paper" / "numbers.tex").read_text()
     check("no zeroed ranking macros left",
           "\\newcommand{\\PoolTau}{0.00}" not in nums)

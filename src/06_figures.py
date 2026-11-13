@@ -1,4 +1,3 @@
-"""Figures for the paper.  Rendered as PDF at column width, grayscale-safe."""
 import json
 
 import matplotlib
@@ -16,11 +15,9 @@ plt.rcParams.update({
     "xtick.labelsize": 7.5, "ytick.labelsize": 7.5, "legend.fontsize": 7.5,
     "axes.linewidth": 0.6, "xtick.major.width": 0.6,
     "ytick.major.width": 0.6, "pdf.fonttype": 42,
-    # STIX matches Times closely; without this, matplotlib falls back to
-    # DejaVu for maths and the PDF ends up carrying a second font family.
     "mathtext.fontset": "stix",
 })
-COL = 3.35          # single-column width in inches
+COL = 3.35
 SHORT = {e: EMO_NAME[e][:3] for e in EMOTIONS}
 
 
@@ -91,7 +88,6 @@ def fig_ranking():
 
 
 def fig_ranking_pooled():
-    """Every (system, training label) entry on one leaderboard, both keys."""
     res = pd.read_csv(TABLES / "main_results.csv")
     rk = json.load(open(TABLES / "ranking_analysis.json"))["ranking"]
     if "pooled" not in rk:
@@ -157,7 +153,6 @@ def fig_per_emotion():
     fig, ax = plt.subplots(figsize=(COL, COL * 0.78))
     ax.bar(x - w, human, w, label="listeners, intended key", color="0.25")
     ax.bar(x, m_i, w, label=f"{best}, intended key", color="0.62")
-    # hatched so the series stays distinct from the dark bars in a B/W print
     ax.bar(x + w, m_p, w, label=f"{best}, perceived key", color="#c0392b",
            hatch="////", edgecolor="white", linewidth=0)
     ax.axhline(100 / 6, ls=(0, (2, 2)), lw=0.7, color="k", zorder=0)

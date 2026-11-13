@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-# Reproduce the whole study from a clean checkout.
-#
-#   bash scripts/run_all.sh            everything, including the audio pipeline
-#   bash scripts/run_all.sh --labels   only the parts that need no audio
-#
-# Everything runs on CPU. The WavLM pass is the slow step (~30-60 min on 16
-# cores) and is resumable: it writes shards under data/features/ssl_shards.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=./.venv/Scripts/python.exe

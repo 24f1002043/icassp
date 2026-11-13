@@ -1,13 +1,3 @@
-"""Mean-pooled WavLM representations for every clip (frozen, CPU only).
-
-Hidden states are averaged over the valid frames of each utterance and then over
-transformer layers 1-12; no layer is selected on task performance, so nothing
-here is tuned against either label set.
-
-Results are written in shards so that the run can be resumed: only the layer
-average is retained, which keeps the resident set small enough to sit alongside
-the rest of the pipeline.
-"""
 import sys
 import time
 
@@ -23,7 +13,7 @@ SHARDS = FEAT / "ssl_shards"
 MODEL = "microsoft/wavlm-base-plus"
 SR = 16000
 BATCH = 8
-SHARD = 400          # clips per shard file
+SHARD = 400
 
 
 def main():
@@ -68,7 +58,7 @@ def main():
                     mask = (torch.arange(T)[None, :] < lens[:, None]).float()
                     denom = mask.sum(1)[:, None]
                     acc = None
-                    for h in res.hidden_states[1:]:          # layers 1-12
+                    for h in res.hidden_states[1:]:
                         pooled = (h * mask[:, :, None]).sum(1) / denom
                         acc = pooled if acc is None else acc + pooled
                     vecs.append((acc / (len(res.hidden_states) - 1)).numpy())

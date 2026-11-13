@@ -1,24 +1,3 @@
-"""System definitions and the label-regime-agnostic training loop.
-
-Every target is a distribution over the six categories, so the three label
-regimes differ only in that distribution:
-
-    intended   one-hot on the filename label
-    perceived  one-hot on the plurality of the voice-only votes
-    soft       the normalised voice-only vote distribution
-
-All estimators are fitted by weighted cross-entropy, which for a distributional
-target is obtained exactly by replicating each clip once per category with the
-category's probability mass as its sample weight.
-
-Training is class-balanced in every regime. This matters because the three
-label sets have very different priors -- 14.6% of the intended labels are
-neutral against 56.6% of the perceived ones -- and unbalanced training against a
-neutral-dominated target collapses onto neutral. Since we report unweighted
-average recall, which is deliberately prior-insensitive, the matched training
-objective is the prior-insensitive one; otherwise a regime would be penalised
-for the shape of its label distribution rather than for its content.
-"""
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.kernel_approximation import Nystroem
@@ -36,7 +15,6 @@ BALANCE = __import__("os").environ.get("BALANCE", "1") != "0"
 
 
 def class_weights(Q):
-    """Inverse-frequency weights from the target mass in each category."""
     if not BALANCE:
         return np.ones(K)
     mass = Q.sum(axis=0)
@@ -44,9 +22,7 @@ def class_weights(Q):
     return cw / cw.mean()
 
 
-# --------------------------------------------------------------------- torch
 class TorchMLP:
-    """Two-layer MLP trained directly on distributional targets."""
 
     def __init__(self, hidden=(256, 128), dropout=0.3, lr=1e-3, epochs=80,
                  batch=128, weight_decay=1e-4, patience=12, seed=SEED):
@@ -117,9 +93,7 @@ class TorchMLP:
             return torch.softmax(self.net(Xt), 1).numpy()
 
 
-# ------------------------------------------------------------------- sklearn
 class SklearnSystem:
-    """Wraps a scikit-learn estimator so it consumes distributional targets."""
 
     def __init__(self, factory):
         self.factory = factory
@@ -141,8 +115,8 @@ class SklearnSystem:
         return full
 
 
+# all systems compared in the paper
 def make_systems():
-    """(name, feature key, builder) for every system compared in the paper."""
     def lr(C):
         return lambda: Pipeline([
             ("sc", StandardScaler()),

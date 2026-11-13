@@ -1,4 +1,3 @@
-"""Write RESULTS.md: every number the paper cites, with its provenance."""
 import json
 
 import pandas as pd

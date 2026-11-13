@@ -1,15 +1,3 @@
-"""Train every system under each label regime and score it under every key.
-
-For each (system, training label regime) pair we run speaker-independent
-5-fold cross-validation over the 91 actors, collect out-of-fold posteriors for
-all 7442 clips, and then score those same posteriors against
-
-    intended   the filename label,
-    perceived  the plurality voice-only label,
-    soft       the full voice-only vote distribution.
-
-Nothing about the model changes between scoring keys: only the answer sheet.
-"""
 import json
 import sys
 import time
@@ -43,6 +31,7 @@ def target_matrices(df):
     return Q
 
 
+# grouped k-fold by actor, saves out-of-fold posteriors for every system
 def main():
     only = [a for a in sys.argv[1:] if not a.startswith("--")] or None
     labels = pd.read_csv(PROC / "clip_labels.csv", index_col=0).sort_index()
@@ -82,7 +71,6 @@ def main():
             t0 = time.time()
             P = np.zeros((len(labels), len(EMOTIONS)))
             for k, (tr, te) in enumerate(folds):
-                # inner split by actor for early stopping / no peeking at test
                 g_tr = groups[tr]
                 uniq = np.unique(g_tr)
                 rs = np.random.RandomState(SEED + k)
